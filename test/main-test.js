@@ -3,11 +3,11 @@
 
 describe('check validation', () => {
   it('Should return true when input ITEM000001', () => {
-    expect(isBarcodeValid(['ITEM000001','ITEM000003-2.5'])).toBe(true)
+    expect(isItemValid(['ITEM000001','ITEM000003-2.5'])).toBe(true)
   })  
 
   it('Should return true when input ITEM000022', () => {
-    expect(isBarcodeValid(['ITEM000000'])).toBe(false)
+    expect(isItemValid(['ITEM000022'])).toBe(false)
   })
 })
 

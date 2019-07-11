@@ -1,7 +1,5 @@
 'use strict';
 
-const Splited
-
 const isItemValid =(Items)=> {
     let barcodes=loadAllItems().map((item)=>item.barcode)
     return Items.every(item=>{
