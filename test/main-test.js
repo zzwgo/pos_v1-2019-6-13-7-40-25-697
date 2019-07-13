@@ -76,3 +76,19 @@ describe('calculate promotion Price', () => {
 })
 })
 
+
+let finaItems=calculatePromotionPrice( calculateOriginalPrice( ConvertItems(barcodeList3)).settlementItems ,calculateOriginalPrice( ConvertItems(barcodeList3)).total_cost ) 
+describe('creat Receipt', () => {
+
+    const expectText = `***<没钱赚商店>收据***
+名称：可口可乐，数量：4瓶，单价：3.00(元)，小计：6.00(元)
+名称：苹果，数量：2斤，单价：5.50(元)，小计：11.00(元)
+----------------------
+总计：17.00(元)
+节省：6.00(元)
+**********************`;
+
+  it('should return receipt} when input barcodeList', () => {
+    expect(creatReceipt(finaItems.settlementItems,finaItems.total_cost,finaItems.totalPromotion)).toEqual(expectText)
+  })
+}) 
