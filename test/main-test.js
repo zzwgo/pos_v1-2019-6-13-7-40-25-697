@@ -57,3 +57,22 @@ describe('calculate Original Price', () => {
     })
   })  
 })
+
+describe('calculate promotion Price', () => {
+  it('should return promotiontItems and totalPromotion when   ', () => {
+    expect(calculatePromotionPrice( calculateOriginalPrice( ConvertItems(barcodeList2)).settlementItems ,calculateOriginalPrice( ConvertItems(barcodeList2)).total_cost )  )
+          .toEqual({
+      settlementItems: [{
+      detail: { barcode: "ITEM000000", name: "可口可乐",unit:"瓶", price: 3.00 },
+      count: 2.5,
+      originalTotal: 7.5,
+      promotion:'BUY_TWO_GET_ONE_FREE',
+      promotionPrice:3,
+  }
+    ],
+    totalPromotion: 3,
+    total_cost:7.5
+    })
+})
+})
+

@@ -46,3 +46,23 @@ const calculateOriginalPrice =(ConvertItems)=> {
     return {settlementItems,total_cost}
 }
 
+const calculatePromotionPrice =(settlementItems,total_cost)=> {
+    let totalPromotion=0
+        // set promotion
+    settlementItems.forEach(item=>{
+        let hasPromotionItem=loadPromotions().find(it=>it.barcodes.includes
+
+(item.detail.barcode))
+        if(hasPromotionItem){
+            item.promotion=hasPromotionItem.type
+        }
+    })
+    settlementItems.forEach(item=>{
+        // calculate promotion
+        if(item.promotion=="BUY_TWO_GET_ONE_FREE"){
+            item.promotionPrice=parseInt(item.count/2)*item.detail.price
+            totalPromotion+=item.promotionPrice
+        }
+    })
+    return{settlementItems,totalPromotion,total_cost}
+}
