@@ -10,3 +10,15 @@ const isItemValid =(Items)=> {
         }
     })
 }
+
+const ConvertItems =(Items)=> {
+    return Items.map(item=>{
+        let ConvertItem=item.split("-")
+        return({
+            barcode:ConvertItem[0],
+            count:ConvertItem[1]?parseFloat(ConvertItem[1]):1
+        })
+    })
+}
+
+
