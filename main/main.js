@@ -76,9 +76,7 @@ const creatReceipt=(finaItems,total_cost,totalPromotion)=>{
         }
         console.log(item.detail.price)
         console.log(finalCost)
-        receipt+= `名称：${item.detail.name}，数量：${item.count}${item.detail.unit}，单价：
-
-${item.detail.price.toFixed(2)}(元)，小计：${finalCost.toFixed(2)}(元)\n`
+        receipt+= `名称：${item.detail.name}，数量：${item.count}${item.detail.unit}，单价：${item.detail.price.toFixed(2)}(元)，小计：${finalCost.toFixed(2)}(元)\n`
     })
 
     receipt += `----------------------\n总计：${(total_cost-totalPromotion).toFixed(2)}(元)\n节省：${totalPromotion.toFixed(2)}(元)\n**********************`
