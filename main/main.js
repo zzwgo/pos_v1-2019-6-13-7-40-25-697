@@ -84,3 +84,18 @@ ${item.detail.price.toFixed(2)}(元)，小计：${finalCost.toFixed(2)}(元)\n`
     receipt += `----------------------\n总计：${(total_cost-totalPromotion).toFixed(2)}(元)\n节省：${totalPromotion.toFixed(2)}(元)\n**********************`
     return receipt;
 }
+
+const printReceipt=(barcodeLists)=>{
+    if(!isItemValid(barcodeLists)){
+        return 'illegal barcodeLists'
+    }else{
+        let convertItems=ConvertItems(barcodeList3)
+        let settlementItems=calculateOriginalPrice(convertItems).settlementItems
+        let total_cost=calculateOriginalPrice(convertItems).total_cost
+        let finalSettlementItems=calculatePromotionPrice
+
+(settlementItems,total_cost).settlementItems
+        let totalPromotion=calculatePromotionPrice(settlementItems,total_cost).totalPromotion
+        return creatReceipt(finalSettlementItems,total_cost,totalPromotion)
+    }
+}
