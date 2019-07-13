@@ -21,4 +21,28 @@ const ConvertItems =(Items)=> {
     })
 }
 
+const calculateOriginalPrice =(ConvertItems)=> {
+    let total_cost=0
+    let settlementItems=[]
+    ConvertItems.forEach(item=>{
+        let settleItem=settlementItems.find(it=>item.barcode===it.detail.barcode)
+        if(!settleItem){
+            let itemDetail=loadAllItems().find(it=>item.barcode===it.barcode)
+            settlementItems.push({
+                detail:itemDetail,
+                count:item.count,
+                originalTotal:item.count*itemDetail.price,
+                promotion:undefined,
+                promotionPrice:undefined,
+            })
+            total_cost+=item.count*itemDetail.price
+        }else{
+            settleItem.count+=item.count
+            settleItem.originalTotal+=item.count*settleItem.detail.price
+            total_cost+=item.count*settleItem.detail.price
+        }
+    })
+    console.log(settlementItems)
+    return {settlementItems,total_cost}
+}
 

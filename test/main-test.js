@@ -24,3 +24,36 @@ describe('Convert Items', () => {
   })
 }) 
 
+describe('calculate Original Price', () => {
+  it('should return except and total_cost when input ConvertItems(barcodeList)', () => {
+    expect(calculateOriginalPrice(ConvertItems(barcodeList))).toEqual({
+      settlementItems: [{
+        detail: { barcode: "ITEM000000", name: "可口可乐",unit:"瓶", price: 3.00 },
+        count: 1,
+        originalTotal: 3,
+        promotion:undefined,
+        promotionPrice:undefined,
+    },{
+      detail: { barcode: "ITEM000001", name: "雪碧",unit:"瓶", price: 3.00 },
+      count: 1.5,
+      originalTotal: 4.5,
+      promotion:undefined,
+      promotionPrice:undefined,
+  }
+    ],
+    total_cost: 7.5
+    })
+  })  
+  it('should return expect and total_cost when input ConvertItems(barcodeList2)', () => {
+    expect(calculateOriginalPrice(ConvertItems(barcodeList2))).toEqual({
+      settlementItems: [{
+        detail: { barcode: "ITEM000000", name: "可口可乐",unit:"瓶", price: 3.00 },
+        count: 2.5,
+        originalTotal: 7.5,
+        promotion:undefined,
+        promotionPrice:undefined,
+    }],
+    total_cost: 7.5
+    })
+  })  
+})
